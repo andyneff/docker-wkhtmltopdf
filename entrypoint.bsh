@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eu
+
+groupadd user -fog ${DOCKER_GROUP_ID-1000}
+id user &>/dev/null && userdel user
+useradd -u ${DOCKER_USER_ID-1000} -o --create-home --home-dir /home/user -g user user
+
+exec gosu user "${@}"

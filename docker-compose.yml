@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+  wkhtmltopdf:
+    image:
+      andyneff/wkhtmltopdf
+    build:
+      context: .
+    volumes:
+      - ${SRC_DIR}:/work
+    environment:
+      - DOCKER_USER_ID=${USER_ID}
+      - DOCKER_GROUP_ID=${GROUP_ID}
